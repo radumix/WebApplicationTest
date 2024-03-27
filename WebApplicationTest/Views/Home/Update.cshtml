@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Update Page";
+}
+@model WebApplicationTest.Models.Customer
+
+<div class="jumbotron">
+    <h1>Update Customer</h1>
+</div>
+
+@using (Html.BeginForm("SaveChanges", "Home", FormMethod.Post, new { @class = "container mt-5" }))
+{
+
+    <div class="form-group">
+        <span style="display:none;">
+            @Html.TextBoxFor(model => model.Id)
+        </span>
+        <table class="table">
+            <tr>
+                <td class="_label">
+                    Name
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.CustomerName, new { @class = "form-control" })
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="form-group">
+        <table class="table">
+            <tr>
+                <td class="_label">
+                    Email
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.CustomerEmail, new { @class = "form-control" })
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="form-group">
+        <table class="table">
+            <tr>
+                <td class="_label">
+                    Address
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.CustomerAddress, new { @class = "form-control" })
+                </td>
+            </tr>
+        </table>
+    </div>
+    <button onclick="window.location.href='@Url.Action("Index", "Home")'" type="button" class="btn btn-primary">Cancel</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
+}
+
+
+
+<style>
+    .table {
+        width: 100%;
+    }
+
+        .table tr td {
+            padding: 5px;
+        }
+
+    ._label {
+        width: 30%;
+    }
+
+</style>

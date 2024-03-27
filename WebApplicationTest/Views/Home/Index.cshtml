@@ -1,0 +1,117 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model WebApplicationTest.Models.Customer
+
+<div class="text-center">
+
+    <div class="jumbotron">
+        <h1>Welcome to test app</h1>
+    </div>
+
+    @using (Html.BeginForm("SaveData", "Home", FormMethod.Post, new { @class = "container mt-5" }))
+    {
+   
+        <div class="form-group">
+            <table class="table">
+                <tr>
+                    <td class="_label">
+                       Name
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.CustomerName, new { @class = "form-control" })
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="form-group">
+            <table class="table">
+                <tr>
+                    <td class="_label">
+                       Email
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.CustomerEmail, new { @class = "form-control" })
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="form-group">
+            <table class="table">
+                <tr>
+                    <td class="_label">
+                      Address
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.CustomerAddress, new { @class = "form-control" })
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <br />
+    }
+
+    @if (ViewBag.Remarks)
+    {
+        <div class="alert @ViewBag.Alert" role="alert" style="padding-bottom:20px;">
+            @ViewBag.Message
+        </div>
+    }
+
+    <div class="list" id="list">
+    </div>
+
+    <br /> <br />
+
+
+    @section Scripts {
+        <script type="text/jscript">
+            $('#list').load('/Home/CustomerList');
+
+        </script>
+    }
+
+
+
+
+    <style>
+        .table {
+            width:100%;
+        }
+
+        .table tr td{
+            padding:5px;
+        }
+
+        ._label{
+            width:30%;
+        }
+
+    </style>
+
+ 
+    
+</div>
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Content goes here...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

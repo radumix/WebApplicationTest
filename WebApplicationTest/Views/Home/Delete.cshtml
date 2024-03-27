@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Update Page";
+}
+@model WebApplicationTest.Models.Customer
+
+<div class="jumbotron" style="color:red">
+    <h1>Are you sure you want to delete this record?</h1>
+</div>
+
+@using (Html.BeginForm("DeleteRecord", "Home", FormMethod.Post, new { @class = "container mt-5" }))
+{
+    <span style="display:none;">
+        @Html.TextBoxFor(model => model.Id)
+    </span>
+
+    <button onclick="window.location.href='@Url.Action("Index", "Home")'" type="button" class="btn btn-primary">Cancel</button>
+    <button type="submit" class="btn btn-danger">Continue</button>
+}
